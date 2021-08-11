@@ -18,10 +18,9 @@ deploy:
   provider: pages  # github pages
   skip_cleanup: true
   keep_history: true
-  github_token: $GITHUB-TOKEN # con el simbolo $ se crean variables
+  github_token: $GITHUB_TOKEN # con el simbolo $ se crean variables
   local_dir: dist/ # verificar el path: path.resolve(__dirname, 'dist'),  en webpack.config.js
   target_branch: gh-pages # en donde voy a publicar
   commit_message: "Deploy del proyecto"
-
-on:
-  branch: master #cuando detecte un cambio en esta rama iniciara todo lo configurado en este archivo
+  on:
+    branch: master #cuando detecte un cambio en esta rama iniciara todo lo configurado en este archivo
