@@ -14,13 +14,27 @@ git:
 script:
   - yarn build
 
+#configuracion para enviar notificaciones al correo
+notificacions:
+  #slack: nombre_canal:token generado se debe encriptar para pegarlo aca  en slack se debe instalar la app de travis y configurarla
+    #secure:
+    #token encriptado se debe instalr ruby y luego travis --->  travis encrypt token 
+  email:
+    recipients:
+      - rvosistemas@outlook.com
+    on_sucess: always # cuando los cambios corrieron bien
+    on_failure: always # cuando los cambios corrieron mal
+
 deploy:
   provider: pages  # github pages
   skip_cleanup: true
   keep_history: true
+  # api_key: apikey    # cuando se tabaja con heroku se revela y se pega
+  # app: platzi-store
   github_token: $GITHUB_TOKEN # con el simbolo $ se crean variables
   local_dir: dist/ # verificar el path: path.resolve(__dirname, 'dist'),  en webpack.config.js
   target_branch: gh-pages # en donde voy a publicar
   commit_message: "Deploy del proyecto"
   on:
+    #repo: usuario/repo
     branch: master #cuando detecte un cambio en esta rama iniciara todo lo configurado en este archivo
